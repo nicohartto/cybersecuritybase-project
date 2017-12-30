@@ -1,16 +1,18 @@
 # Cyber Security Base – Course Project I
 You can find the project files from here: https://github.com/nicohartto/cybersecuritybase-project and clone the project to your own local machine. This project uses Starter Code provided. Simply run the spring-boot application, and open http://localhost:8080 to review following issues.
 
+NOTE: You might need to configure ports depending on your own OWASP ZAP proxy settings.
+
 ## Issue: A2-Broken Authentication and Session Management
 ### Steps to reproduce:
 1.	Open project in browser (e.g. http://localhost:8080)
 2.	Create few subscribers from the initial page
 3.	Open up OWASP Zed Attack Proxy
 4.	Do a quick scan of the site by using ZAP Spider
-5.	Right-click http://localhost:8080 on the left, and select “Attack” => “Spider”
+5.	Right-click http://localhost:8080 on the left, and select "Attack" => "Spider"
 6.	Notice that there is a URL available: http://localhost:8080/list
 7.	This part of the application should be for admins only
-8.	Click on any created subscribers “Subscriber details” -link
+8.	Click on any created subscribers "Subscriber details" -link
 9.	You will see full details of said subscriber even though this is not supposed to be the case
 ### Steps to fix:
 1.	Use session based access-control for admin area
@@ -24,17 +26,17 @@ You can find the project files from here: https://github.com/nicohartto/cybersec
 1.	Open project in browser (e.g. http://localhost:8080)
 2.	Create few subscribers from the initial page
 3.	Notice that the credit-card number field is susceptible for a XSS attack
-4.	Create a subscriber with malicious content in credit-card number field such as <script>console.log(“hello”)</script> - in real-life this could be a XHR request to malicious site that sends all the information scraped from the page
+4.	Create a subscriber with malicious content in credit-card number field such as <script>console.log("hello")</script> - in real-life this could be a XHR request to malicious site that sends all the information scraped from the page
 5.	Open up OWASP Zed Attack Proxy
 6.	Do a quick scan of the site by using ZAP Spider
-7.	Right-click http://localhost:8080 on the left, and select “Attack” => “Spider”
+7.	Right-click http://localhost:8080 on the left, and select "Attack" => "Spider"
 8.	Notice that there is a URL available: http://localhost:8080/list
 9.	Go to URL http://localhost:8080/list and open up browser console
-10.	See that the word “hello” is indeed printed in the console, which results in the XSS injection being successfully completed
+10.	See that the word "hello" is indeed printed in the console, which results in the XSS injection being successfully completed
 
 ### Steps to fix:
-1.	Fix resources/templates/list.html ThymeLeaf view by removing the XSS injection subsceptible <span th:utext=”…> and use the escaped version of <span th:text=” …> instead
-2.	Fix resources/templates/list-subscriber.html ThymeLeaf view by removing the XSS injection subsceptible <span th:utext=”…> and use the escaped version of <span th:text=” …> instead
+1.	Fix resources/templates/list.html ThymeLeaf view by removing the XSS injection subsceptible <span th:utext="…> and use the escaped version of <span th:text=" …> instead
+2.	Fix resources/templates/list-subscriber.html ThymeLeaf view by removing the XSS injection subsceptible <span th:utext="…> and use the escaped version of <span th:text=" …> instead
 3.	Validate that malicious user is no longer able to add XSS content via the fixed fields
 4.	Malicious user is no longer able to add XSS content to this field
 
@@ -43,7 +45,7 @@ You can find the project files from here: https://github.com/nicohartto/cybersec
 1.	Open project in browser (e.g. http://localhost:8080)
 2.	Open up OWASP Zed Attack Proxy
 3.	Do a quick scan of the site by using ZAP Spider
-4.	Right-click http://localhost:8080 on the left, and select “Attack” => “Spider”
+4.	Right-click http://localhost:8080 on the left, and select "Attack" => "Spider"
 5.	Notice that there is a URL http://localhost:8080/debug available
 6.	This shows a full print-out of the system that the application is run on
 
@@ -57,7 +59,7 @@ You can find the project files from here: https://github.com/nicohartto/cybersec
 1.	Open project in browser (e.g. http://localhost:8080)
 2.	Open up OWASP Zed Attack Proxy
 3.	Do a quick scan of the site by using ZAP Spider
-4.	Right-click http://localhost:8080 on the left, and select “Attack” => “Spider”
+4.	Right-click http://localhost:8080 on the left, and select "Attack" => "Spider"
 5.	Notice that there is /debug path available which reveals overly informative information
 6.	Notice that there is no user authentication applied
 7.	Service handles credit-card number but does not use HTTPS
@@ -75,7 +77,7 @@ You can find the project files from here: https://github.com/nicohartto/cybersec
 2.	Create few subscribers on the first-page
 3.	Open up OWASP Zed Attack Proxy
 4.	Do a quick scan of the site by using ZAP Spider
-5.	Right-click http://localhost:8080 on the left, and select “Attack” => “Spider”
+5.	Right-click http://localhost:8080 on the left, and select "Attack" => "Spider"
 6.	Notice that application exposes endpoints /list and /list/${id}
 7.	Open http://localhost:8080/list
 8.	Notice that all subscriber data is visible
