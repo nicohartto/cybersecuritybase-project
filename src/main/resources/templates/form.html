@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Cats, so many cats - a monthly curated list of cat videos</title>
+    </head>
+    <body>
+
+        <h1>Order monthly cat videos by using this form</h1>
+
+        <p>We have the best selection of cat videos money can buy! For a small price of 9.99 USD / month you can have the
+        curated list of cat videos in your email inbox, easily and without any hassle!</p>
+
+        <form action="#" th:action="@{/form}" method="POST">
+            <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
+            <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
+            <p><label for="email">Email</label>: <input type="email" name="email" id="email"/></p>
+            <p><label for="creditCardNumber">Credit-card number</label>: <input type="text" name="creditCardNumber" id="creditCardNumber"/></p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+
+        <p>Tahwte secured site.</p>
+    </body>
+</html>
